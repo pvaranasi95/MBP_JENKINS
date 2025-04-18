@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage('Git checkout') {
             steps {
-                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/pvaranasi95/Python-test.git']])
+                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/pvaranasi95/MBP_JENKINS.git']])
             }
         }
         // stage('Sonar scan') {
