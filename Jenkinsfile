@@ -1,7 +1,5 @@
 pipeline {
-    agent {
-        node{label 'Windows1'}
-    }
+    agent none
     tools {
         jdk 'JDK11'  //JDK17
         maven 'Maven'
