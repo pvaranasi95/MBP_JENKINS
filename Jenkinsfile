@@ -1,5 +1,4 @@
 pipeline {
-    agent none
     tools {
         jdk 'JDK11'  //JDK17
         maven 'Maven'
