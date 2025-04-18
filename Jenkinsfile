@@ -21,7 +21,7 @@ pipeline {
         // }
          stage('Change Directory') {
              steps{
-                 cd C:\\Users\\pavan\\OneDrive\\Desktop\\DevOps\\Python
+                bat 'cd C:\\Users\\pavan\\OneDrive\\Desktop\\DevOps\\Python'
              }
          }
          stage('Docker Image') {
