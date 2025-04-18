@@ -19,9 +19,13 @@ pipeline {
         //          }
         //     }
         // }
+         stage('Change Directory') {
+             steps{
+                 cd C:\\Users\\pavan\\OneDrive\\Desktop\\DevOps\\Python
+             }
+         }
          stage('Docker Image') {
              steps{
-                dir('C:\\Users\\pavan\\OneDrive\\Desktop\\DevOps\\Python')
                  bat 'docker build -t pvaranasi/py-num-guess:%BUILD_NUMBER% .'
              }
          }
