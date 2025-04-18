@@ -20,6 +20,7 @@ pipeline {
         //     }
         // }
          stage('Docker Image') {
+             dir('C:\\Users\\pavan\\OneDrive\\Desktop\\DevOps\\Python')
              steps{
                 bat 'docker build -t pvaranasi/py-num-guess:%BUILD_NUMBER% .'
              }
