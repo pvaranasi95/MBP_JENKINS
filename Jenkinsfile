@@ -6,9 +6,9 @@ pipeline {
     }
 
     stages {
-        stage('Git checkout') {
+        stage('Is UNIX') {
             steps {
-                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/pvaranasi95/MBP_JENKINS.git']])
+                isUnix()
             }
         }
         // stage('Sonar scan') {
