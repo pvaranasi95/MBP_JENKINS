@@ -21,6 +21,8 @@ pipeline {
         stage('Sonar scan') {
             steps{
                 script{
+                    withSonarQubeEnv('Sonar1')"
+                    bat "C:\Users\pavan\OneDrive\Desktop\DevOps\sonarqube-10.4.1.88267\bin\windows-x86-64"
                 //bat 'cd C:\Users\pavan\OneDrive\Desktop\DevOps\sonarqube-10.4.1.88267\bin\windows-x86-64'
                bat '''sonar-scanner.bat -D"sonar.projectKey=MBP_JENKINS" -D"sonar.sources=." -D"sonar.host.url=http://localhost:9000" -D"sonar.token=sqp_e74e2517f3622c5da7fe884b1db3d96cc76bb3d5"'''                
                 }
