@@ -3,6 +3,7 @@ pipeline {
     tools {
         jdk 'JDK11'  //JDK17
         maven 'Maven'
+        sonar 'Sonar1'
     }
 
     stages {
