@@ -13,7 +13,9 @@ pipeline {
         }
         stage ('Git Clone') {
             steps{
+                script{
                 git clone -b %JOB_NAME% https://github.com/pvaranasi95/MBP_JENKINS.git
+                    }
             }
         }
         stage('Sonar scan') {
