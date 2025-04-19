@@ -22,8 +22,13 @@ pipeline {
             steps{
                 script{
                 //bat 'cd C:\Users\pavan\OneDrive\Desktop\DevOps\sonarqube-10.4.1.88267\bin\windows-x86-64'
-               bat 'mvn clean verify sonar:sonar -D"sonar.projectKey=MBP_JENKINS" -D"sonar.sources=." -D"sonar.host.url=http://localhost:9000" -D"sonar.token=sqp_e74e2517f3622c5da7fe884b1db3d96cc76bb3d5"'
-                 }
+               bat '''mvn clean verify sonar:sonar \
+                     sonar-scanner \
+                     -Dsonar.projectKey=MBP_JENKINS \
+                     -Dsonar.sources=. \
+                     -Dsonar.host.url=http://localhost:9000 \
+                     -Dsonar.token=sqp_e74e2517f3622c5da7fe884b1db3d96cc76bb3d5'''                
+                }
             }
         }
          stage('Change Directory') {
