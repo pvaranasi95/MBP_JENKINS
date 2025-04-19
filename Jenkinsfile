@@ -22,8 +22,7 @@ pipeline {
             steps{
                 script{
                 //bat 'cd C:\Users\pavan\OneDrive\Desktop\DevOps\sonarqube-10.4.1.88267\bin\windows-x86-64'
-               bat '''mvn clean verify sonar:sonar \
-                     sonar-scanner \
+               bat '''sonar-scanner \
                      -Dsonar.projectKey=MBP_JENKINS \
                      -Dsonar.sources=. \
                      -Dsonar.host.url=http://localhost:9000 \
