@@ -16,34 +16,34 @@ pipeline {
                 checkout scmGit(branches: [[name: '*/release']], extensions: [], userRemoteConfigs: [[credentialsId: 'pvaranasi-dockerhub', url: 'https://github.com/pvaranasi95/MBP_JENKINS.git']])
             }
         }
-        // stage('Sonar scan') {
-        //     steps{
-        //         script{
-        //         bat 'cd C:\\Users\\pavan\\OneDrive\\Desktop\\sonarqube-10.4.1.88267\\sonar-scanner-6.1.0.4477-windows-x64\\bin'
-        //        bat 'C:\\Users\\pavan\\OneDrive\\Desktop\\sonarqube-10.4.1.88267\\sonar-scanner-6.1.0.4477-windows-x64\\bin\\sonar-scanner.bat -D"sonar.projectKey=Jenkins-Sonarqube-Docker" -D"sonar.sources=." -D"sonar.host.url=http://localhost:9000" -D"sonar.token=sqp_3a7c14cc0030612ec004f1f554f6fa17fd9298a3"'
-        //          }
-        //     }
-        // }
-         // stage('Change Directory') {
-         //     steps{
-         //        bat 'cd C:\\Users\\pavan\\OneDrive\\Desktop\\DevOps\\Python'
-         //     }
-         // }
-         // stage('Docker Image') {
-         //     steps{
-         //         bat 'docker build -t pvaranasi/py-num-guess:%BUILD_NUMBER% .'
-         //     }
-         // }
-         // stage('Docker Push') {
-         //     steps{
-         //         bat 'docker push pvaranasi/py-num-guess:%BUILD_NUMBER%'
-         //     }
-         // }
-         // stage('Container') {
-         //     steps{
-         //         bat 'docker run -d -p 8088:80 --name py-num-guess:%BUILD_NUMBER% py-num-guess:%BUILD_NUMBER%'
-         //     }
-         // }
+        stage('Sonar scan') {
+            steps{
+                script{
+                bat 'cd C:\\Users\\pavan\\OneDrive\\Desktop\\sonarqube-10.4.1.88267\\sonar-scanner-6.1.0.4477-windows-x64\\bin'
+               bat 'sonar-scanner.bat -D"sonar.projectKey=MBP_JENKINS" -D"sonar.sources=." -D"sonar.host.url=http://localhost:9000" -D"sonar.token=sqp_e74e2517f3622c5da7fe884b1db3d96cc76bb3d5"'
+                 }
+            }
+        }
+         stage('Change Directory') {
+             steps{
+                bat 'cd C:\\Users\\pavan\\OneDrive\\Desktop\\DevOps\\Python'
+             }
+         }
+         stage('Docker Image') {
+             steps{
+                 bat 'docker build -t pvaranasi/py-num-guess:%BUILD_NUMBER% .'
+             }
+         }
+         stage('Docker Push') {
+             steps{
+                 bat 'docker push pvaranasi/py-num-guess:%BUILD_NUMBER%'
+             }
+         }
+         stage('Container') {
+             steps{
+                 bat 'docker run -d -p 8088:80 --name py-num-guess:%BUILD_NUMBER% py-num-guess:%BUILD_NUMBER%'
+             }
+         }
      }
     post{
         failure{
