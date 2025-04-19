@@ -1,14 +1,19 @@
 pipeline {
-    agent none
+    agent any
     tools {
         jdk 'JDK11'  //JDK17
         maven 'Maven'
     }
 
     stages {
-        stage('Git checkout') {
+        stage('Is UNIX') {
             steps {
-                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/pvaranasi95/MBP_JENKINS.git']])
+                isUnix()
+            }
+        }
+        stage (Git checkout) {
+            steps{
+                checkout scmGit(branches: [[name: '*/release']], extensions: [], userRemoteConfigs: [[credentialsId: 'pvaranasi-dockerhub', url: 'https://github.com/pvaranasi95/MBP_JENKINS.git']])
             }
         }
         // stage('Sonar scan') {
@@ -19,21 +24,26 @@ pipeline {
         //          }
         //     }
         // }
-         stage('Docker Image') {
-             steps{
-                bat 'docker build -t pvaranasi/Py-Num-Guess:%BUILD_NUMBER% .'
-             }
-         }
-         stage('Docker Push') {
-             steps{
-                 bat 'docker push pvaranasi/Py-Num-Guess:%BUILD_NUMBER%'
-             }
-         }
-         stage('Container') {
-             steps{
-                 bat 'docker run -d -p 8088:80 --name Py-Num-Guess:%BUILD_NUMBER% Py-Num-Guess:%BUILD_NUMBER%'
-             }
-         }
+         // stage('Change Directory') {
+         //     steps{
+         //        bat 'cd C:\\Users\\pavan\\OneDrive\\Desktop\\DevOps\\Python'
+         //     }
+         // }
+         // stage('Docker Image') {
+         //     steps{
+         //         bat 'docker build -t pvaranasi/py-num-guess:%BUILD_NUMBER% .'
+         //     }
+         // }
+         // stage('Docker Push') {
+         //     steps{
+         //         bat 'docker push pvaranasi/py-num-guess:%BUILD_NUMBER%'
+         //     }
+         // }
+         // stage('Container') {
+         //     steps{
+         //         bat 'docker run -d -p 8088:80 --name py-num-guess:%BUILD_NUMBER% py-num-guess:%BUILD_NUMBER%'
+         //     }
+         // }
      }
     post{
         failure{
