@@ -11,6 +11,11 @@ pipeline {
                 isUnix()
             }
         }
+        stage (Git checkout) {
+            steps{
+                checkout scmGit(branches: [[name: '*/release']], extensions: [], userRemoteConfigs: [[credentialsId: 'pvaranasi-dockerhub', url: 'https://github.com/pvaranasi95/MBP_JENKINS.git']])
+            }
+        }
         // stage('Sonar scan') {
         //     steps{
         //         script{
