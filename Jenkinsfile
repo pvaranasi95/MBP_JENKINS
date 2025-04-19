@@ -11,15 +11,15 @@ pipeline {
                 isUnix()
             }
         }
-        stage ('Git checkout') {
+        stage ('Git Clone') {
             steps{
-                checkout scmGit(branches: [[name:'*/release/num_guess']], extensions: [], userRemoteConfigs: [[credentialsId: 'pvaranasi-dockerhub', url: 'https://github.com/pvaranasi95/MBP_JENKINS.git']])
+                git clone -b %JOB_NAME% https://github.com/pvaranasi95/MBP_JENKINS.git
             }
         }
         stage('Sonar scan') {
             steps{
                 script{
-                bat 'cd C:\\Users\\pavan\\OneDrive\\Desktop\\sonarqube-10.4.1.88267\\sonar-scanner-6.1.0.4477-windows-x64\\bin'
+                bat 'cd C:\Users\pavan\OneDrive\Desktop\DevOps\sonarqube-10.4.1.88267\bin\windows-x86-64'
                bat 'sonar-scanner.bat -D"sonar.projectKey=MBP_JENKINS" -D"sonar.sources=." -D"sonar.host.url=http://localhost:9000" -D"sonar.token=sqp_e74e2517f3622c5da7fe884b1db3d96cc76bb3d5"'
                  }
             }
