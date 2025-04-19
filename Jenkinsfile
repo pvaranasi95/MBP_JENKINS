@@ -13,7 +13,7 @@ pipeline {
         }
         stage ('Git checkout') {
             steps{
-                checkout scmGit(branches: [[name:'%JOB_NAME%']], extensions: [], userRemoteConfigs: [[credentialsId: 'pvaranasi-dockerhub', url: 'https://github.com/pvaranasi95/MBP_JENKINS.git']])
+                checkout scmGit(branches: [[name:'*/release/num_guess']], extensions: [], userRemoteConfigs: [[credentialsId: 'pvaranasi-dockerhub', url: 'https://github.com/pvaranasi95/MBP_JENKINS.git']])
             }
         }
         stage('Sonar scan') {
